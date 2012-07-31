@@ -642,6 +642,10 @@ public class RolapConnection extends ConnectionBase {
             }
         }
         final Query query = statement.getQuery();
+        System.out.println("### ROLAPSCHEMA\nChecksum: " + statement.getSchema().getChecksum());
+        System.out.println("### Identity Hash: " + System.identityHashCode(statement.getSchema()));
+        System.out.println("### Hashcode: " + statement.getSchema().hashCode());
+        System.out.println("### Pool: " + RolapSchema.Pool.instance().hashCode());
         final MemoryMonitor.Listener listener = new MemoryMonitor.Listener() {
             public void memoryUsageNotification(long used, long max) {
                 execution.setOutOfMemory(

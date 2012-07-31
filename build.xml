@@ -259,15 +259,6 @@ demo/access/MondrianFoodMart.mdb"/>
     </not>
   </condition>
 
-  <condition property="jdk17.present">
-    <contains string="${java.version}" substring="1.7." />
-  </condition>
-
-  <condition property="jdk17.not.present">
-    <not>
-      <contains string="${java.version}" substring="1.7." />
-    </not>
-  </condition>
 
   <condition property="java.version.matches.requested">
     <or>
@@ -493,8 +484,7 @@ generate.resources,
 generate.properties,
 def,
 compileJdk15,
-compileJdk16,
-compileJdk17"/>
+compileJdk16"/>
 
   <target name="generate.resources" depends="define-tasks">
 
@@ -565,7 +555,7 @@ If you wish to build for this JDK, modify ${unix.script}.
       <exclude name="mondrian/olap4j/FactoryJdbc3Impl.java" if="jdk15.not.present"/>
       <exclude name="mondrian/olap4j/FactoryJdbc4Impl.java" if="jdk16.not.present"/>
       <exclude name="mondrian/olap4j/FactoryJdbc4Plus.java" if="jdk16.not.present"/>
-      <exclude name="mondrian/olap4j/FactoryJdbc41Impl.java" if="jdk17.not.present"/>
+      <exclude name="mondrian/olap4j/FactoryJdbc41Impl.java" if="true" />
       <exclude name="mondrian/util/UtilCompatibleJdk16.java" if="jdk15.present"/>
     </javac>
     <copy file="src/main/mondrian/rolap/aggmatcher/DefaultRules.xml"
@@ -1256,14 +1246,6 @@ must be run under JDK 1.5." />
     </exec>
   </target>
 
-  <target name="compileJdk17">
-    <exec osfamily="unix" failonerror="true" executable="${unix.script}">
-      <arg line="jdk1.7 -Dskip.download=true compile.java"/>
-    </exec>
-    <exec osfamily="windows" failonerror="true" dir="." executable="cmd">
-      <arg line="/c .\buildOnJdk.bat jdk1.7 -Dskip.download=true compile.java"/>
-    </exec>
-  </target>
 
   <target name="jar" depends="version,compile,compile.tests">
     <mkdir dir="${lib.dir}" />
