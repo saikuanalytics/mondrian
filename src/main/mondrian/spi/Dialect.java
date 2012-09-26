@@ -790,6 +790,7 @@ public interface Dialect {
      */
     enum DatabaseProduct {
         ACCESS,
+        BIGQUERY,
         UNKNOWN,
         DERBY,
         DB2_OLD_AS400,

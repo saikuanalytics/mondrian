@@ -993,6 +993,8 @@ public class JdbcDialectImpl implements Dialect {
             return DatabaseProduct.FIREBIRD;
         } else if (productName.equals("Hive")) {
             return DatabaseProduct.HIVE;
+        } else if (productName.equals("Google Big Query")) {
+            return DatabaseProduct.BIGQUERY;
         } else if (productName.startsWith("Informix")) {
             return DatabaseProduct.INFORMIX;
         } else if (upperProductName.equals("INGRES")) {

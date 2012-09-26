@@ -1,4 +1,5 @@
 mondrian.spi.impl.AccessDialect
+mondrian.spi.impl.BigQueryDialect
 mondrian.spi.impl.Db2Dialect
 mondrian.spi.impl.Db2OldAs400Dialect
 mondrian.spi.impl.DerbyDialect
